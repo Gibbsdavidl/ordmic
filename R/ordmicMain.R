@@ -48,9 +48,11 @@ md <- function(p) {
 }
 
 
-kappa <- function(p1, p2) {
+kappa <- function(p1, p2, ties.method = "random") {
   idperm = 1:length(p1)
-  1 - (2 * max(distvec(p1,p2))) / md(p1)
+  rp1 = rank(p1, ties.method = "random")
+  rp2 = rank(p2, ties.method = "random")
+  1 - (2 * max(distvec(rp1,rp2))) / md(rp1)
 }
 
 
